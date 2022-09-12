@@ -18,6 +18,7 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         drawer: Drawer(),
         appBar: AppBar(
+          backgroundColor: Color.fromARGB(255, 222, 43, 43),
           actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
           title: Text("Lorem Ipsum"),
           bottom: TabBar(tabs: [Tab(text: "ALL POST"), Tab(text: "PROFILE")]),
