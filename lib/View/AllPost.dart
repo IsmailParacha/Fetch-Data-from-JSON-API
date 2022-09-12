@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import '../Model/PostModel.dart';
+
 class AllPost extends StatefulWidget {
   const AllPost({Key? key}) : super(key: key);
 
@@ -10,106 +12,105 @@ class AllPost extends StatefulWidget {
 }
 
 class _AllPostState extends State<AllPost> {
+  late Future _futuremember;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    POST();
+    _futuremember = getmembers();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Padding(
-          padding: const EdgeInsets.only(top: 10.0, left: 5, right: 5),
-          child: [0].applicationType?.name == null
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
-              : SizedBox(
-                  height: MediaQuery.of(context).size.height,
-                  child: ListView.builder(
-                      controller: controller,
-                      itemCount: visitList!.length + 1,
+        padding: const EdgeInsets.all(8.0),
+        child: ListView(
+          children: [
+            FutureBuilder(
+                future: _futuremember,
+                builder: (context, AsyncSnapshot snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  } else if (snapshot.data == null) {
+                    print("obj:null data ${snapshot.data}");
+                    return Column(
+                      children: [
+                        SizedBox(
+                          height: 20,
+                        ),
+                        Center(
+                          child: Text("No DATA"),
+                        )
+                      ],
+                    );
+                  } else {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: snapshot.data.length,
                       itemBuilder: (
                         BuildContext context,
                         int index,
                       ) {
-                        if (index == visitList!.length) {
-                          return ListTile(
-                            title: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
-                                CircularProgressIndicator(),
-                              ],
+                        return Column(
+                          children: [
+                            ListTile(
+                              title: Text("${snapshot.data[index].title}",
+                                  style: TextStyle(
+                                      color: Colors.grey[800],
+                                      fontWeight: FontWeight.bold)),
+                              subtitle: Text("${snapshot.data[index].body}"),
                             ),
-                          );
-                        } else {
-                          return list(
-                            (visitList?[index]
-                                .employeeProfileByAssignedById
-                                ?.firstName),
-                            (visitList?[index]
-                                .employeeProfileByAssignedById
-                                ?.lastName),
-                            (visitList?[index].applicationType?.name),
-                            (visitList?[index].checkInDate),
-                            (visitList?[index].checkOutDate),
-                            (visitList?[index].systemType?.id),
-                          );
-                        }
-                      }),
-                )),
+                            Divider(
+                              thickness: 1.0,
+                            )
+                          ],
+                        );
+                      },
+                    );
+                  }
+                }),
+          ],
+        ),
+      ),
     );
   }
 }
 
-Future<void> POST() async {
-  var response = await http.get(
-    Uri.parse('https://jsonplaceholder.typicode.com/posts'),
+Widget list(var title, var body) {
+  return Column(
+    children: [Text(title), Text(body)],
   );
-  print(response.statusCode);
-  if (response.statusCode == 200) {
-    List<dynamic> responseJson = jsonDecode(response.body);
-    PostModel obj = PostModel.fromJson(responseJson[0]);
-    print(obj.title);
+}
+
+getmembers() async {
+  try {
+    var response = await http.get(
+      Uri.parse('https://jsonplaceholder.typicode.com/posts'),
+    );
+    var responseJson = jsonDecode(response.body);
+    List<Calldata> calldatascreen = [];
+    for (var i = 0; i < responseJson.length; i++) {
+      Calldata services = Calldata(
+          userId: responseJson[i]['userId'],
+          id: responseJson[i]['id'],
+          title: responseJson[i]['title'],
+          body: responseJson[i]['body']);
+      calldatascreen.add(services);
+    }
+    return calldatascreen;
+  } catch (e) {
+    print("error:$e");
   }
 }
 
-// To parse this JSON data, do
-//
-//     final postModel = postModelFromJson(jsonString);
+class Calldata {
+  int? id;
+  int? userId;
+  String? title;
+  String? body;
 
-List<PostModel> postModelFromJson(String str) =>
-    List<PostModel>.from(json.decode(str).map((x) => PostModel.fromJson(x)));
-
-String postModelToJson(List<PostModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
-class PostModel {
-  PostModel({
-    required this.userId,
-    required this.id,
-    required this.title,
-    required this.body,
-  });
-
-  int userId;
-  int id;
-  String title;
-  String body;
-
-  factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
-        userId: json["userId"],
-        id: json["id"],
-        title: json["title"],
-        body: json["body"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "userId": userId,
-        "id": id,
-        "title": title,
-        "body": body,
-      };
+  Calldata({this.userId, this.id, this.title, this.body});
 }
