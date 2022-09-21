@@ -26,7 +26,15 @@ class _ScrollingPageState extends State<ScrollingPage> {
   Future fetch() async {
     setState(() {
       items.addAll(['item A', 'item B']);
+
     });
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    // TODO: implement dispose
+    super.dispose();
   }
 
   @override
