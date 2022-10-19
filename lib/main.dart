@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ms_global/Get%20State/Routes/mainPage.dart';
 import 'package:ms_global/View/home.dart';
 import 'package:ms_global/infiniteScrolling/ScrollingPage.dart';
 
@@ -36,7 +37,7 @@ class _MyAppState extends State<MyApp> {
               image: AssetImage('images/splash.jpeg'),
             )),
           ),
-          nextScreen: Home(),
+          nextScreen: mainPage(),
         )),
       ),
     );
