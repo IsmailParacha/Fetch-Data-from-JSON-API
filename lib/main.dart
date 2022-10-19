@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:ms_global/View/login.dart';
+import 'package:get/get.dart';
+import 'package:ms_global/View/home.dart';
 import 'package:ms_global/infiniteScrolling/ScrollingPage.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       scaffoldMessengerKey: messengerKey,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
@@ -35,7 +36,7 @@ class _MyAppState extends State<MyApp> {
               image: AssetImage('images/splash.jpeg'),
             )),
           ),
-          nextScreen: ScrollingPage(),
+          nextScreen: Home(),
         )),
       ),
     );
