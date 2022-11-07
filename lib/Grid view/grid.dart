@@ -143,8 +143,8 @@ class _GridExampleState extends State<GridExample> {
   Widget list(var fname, var lname) {
     return Center(
       child: Container(
-        width: 100,
-        height: 100,
+        width: 170,
+        height: 150,
         color: Colors.blueAccent,
         child: Center(
           child: Text(
