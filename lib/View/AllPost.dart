@@ -80,7 +80,8 @@ class _AllPostState extends State<AllPost> {
   }
 }
 
-Widget list(var title, var body) {
+Widget list(var title, var body, String? name, String? checkInDate,
+    String? checkOutDate, int? id) {
   return Column(
     children: [Text(title), Text(body)],
   );

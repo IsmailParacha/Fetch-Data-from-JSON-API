@@ -2,6 +2,7 @@ import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:ms_global/Get%20State/Routes/mainPage.dart';
+import 'package:ms_global/Grid%20view/grid.dart';
 import 'package:ms_global/View/home.dart';
 import 'package:ms_global/infiniteScrolling/ScrollingPage.dart';
 
@@ -24,22 +25,24 @@ class _MyAppState extends State<MyApp> {
       scaffoldMessengerKey: messengerKey,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        // body: Property(),
-        body: Center(
-            child: AnimatedSplashScreen(
-          duration: 1500,
-          splashTransition: SplashTransition.slideTransition,
-          splashIconSize: 400,
-          splash: Container(
-            decoration: const BoxDecoration(
-                image: DecorationImage(
-              image: AssetImage('images/splash.jpeg'),
-            )),
-          ),
-          nextScreen: mainPage(),
-        )),
-      ),
+      home: GridExample(),
+      // home: Scaffold(
+      //   // body: Property(),
+      //   body: Center(
+      //       child: AnimatedSplashScreen(
+      //     duration: 1500,
+      //     splashTransition: SplashTransition.slideTransition,
+      //     splashIconSize: 400,
+      //     splash: Container(
+      //       decoration: const BoxDecoration(
+      //           image: DecorationImage(
+      //         image: AssetImage('images/splash.jpeg'),
+      //       )),
+      //     ),
+      // nextScreen: mainPage(),
+
+      // )),
+      // ),
     );
   }
 }
