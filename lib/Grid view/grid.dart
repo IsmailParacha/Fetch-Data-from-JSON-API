@@ -108,38 +108,38 @@ class _GridExampleState extends State<GridExample> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Grid View")),
-      //~~~~~~~~~~~~~~~~GRID COUNT~~~~~~~~~~~~~~~~~~~~~
-      // body: GridView.count(
-      //   crossAxisCount: 3,
-      //   crossAxisSpacing: 0.0,
-      //   mainAxisSpacing: 0.0,
-      //   children: List.generate(visitList1!.length, (index) {
-      //     return list(
-      //       (visitList1?[index].employeeProfileByAssignedById?.firstName),
-      //       (visitList1?[index].employeeProfileByAssignedById?.lastName),
-      //     );
-      //   }),
-      // )
+        appBar: AppBar(title: Text("Grid View")),
+        //~~~~~~~~~~~~~~~~GRID COUNT~~~~~~~~~~~~~~~~~~~~~
+        body: GridView.count(
+          crossAxisCount: 3,
+          crossAxisSpacing: 0.0,
+          mainAxisSpacing: 0.0,
+          children: List.generate(visitList1!.length, (index) {
+            return list(
+              (visitList1?[index].employeeProfileByAssignedById?.firstName),
+              (visitList1?[index].employeeProfileByAssignedById?.lastName),
+            );
+          }),
+        )
 
-      //~~~~~~~~~~~~~~~~~~~~GRID VIEW~~~~~~~~~~~~~~~
-      body: Container(
-          padding: EdgeInsets.all(1.0),
-          child: GridView.builder(
-            itemCount: visitList1!.length,
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: 0.0,
-              mainAxisSpacing: 0,
-            ),
-            itemBuilder: (BuildContext context, int index) {
-              return list(
-                (visitList1?[index].employeeProfileByAssignedById?.firstName),
-                (visitList1?[index].employeeProfileByAssignedById?.lastName),
-              );
-            },
-          )),
-    );
+        //~~~~~~~~~~~~~~~~~~~~GRID VIEW~~~~~~~~~~~~~~~
+        // body: Container(
+        //     padding: EdgeInsets.all(1.0),
+        //     child: GridView.builder(
+        //       itemCount: visitList1!.length,
+        //       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        //         crossAxisCount: 2,
+        //         crossAxisSpacing: 0.0,
+        //         mainAxisSpacing: 10.0,
+        //       ),
+        //       itemBuilder: (BuildContext context, int index) {
+        //         return list(
+        //           (visitList1?[index].employeeProfileByAssignedById?.firstName),
+        //           (visitList1?[index].employeeProfileByAssignedById?.lastName),
+        //         );
+        //       },
+        //     )),
+        );
   }
 
   Widget list(var fname, var lname) {
@@ -154,7 +154,8 @@ class _GridExampleState extends State<GridExample> {
         child: Center(
           child: Text(
             "$fname $lname",
-            overflow: TextOverflow.ellipsis,
+            // overflow: TextOverflow.ellipsis,
+            style: TextStyle(color: Colors.white),
           ),
         ),
       ),
