@@ -124,11 +124,13 @@ class _GridExampleState extends State<GridExample> {
 
       //~~~~~~~~~~~~~~~~~~~~GRID VIEW~~~~~~~~~~~~~~~
       body: Container(
-          padding: EdgeInsets.all(12.0),
+          padding: EdgeInsets.all(1.0),
           child: GridView.builder(
             itemCount: visitList1!.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 2,
+              crossAxisSpacing: 0.0,
+              mainAxisSpacing: 0,
             ),
             itemBuilder: (BuildContext context, int index) {
               return list(
@@ -145,7 +147,10 @@ class _GridExampleState extends State<GridExample> {
       child: Container(
         width: 170,
         height: 150,
-        color: Colors.blueAccent,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15),
+          color: Colors.blueAccent,
+        ),
         child: Center(
           child: Text(
             "$fname $lname",
