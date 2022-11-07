@@ -111,9 +111,10 @@ class _GridExampleState extends State<GridExample> {
         appBar: AppBar(title: Text("Grid View")),
         //~~~~~~~~~~~~~~~~GRID COUNT~~~~~~~~~~~~~~~~~~~~~
         body: GridView.count(
+          primary: false,
           crossAxisCount: 3,
-          crossAxisSpacing: 0.0,
-          mainAxisSpacing: 0.0,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
           children: List.generate(visitList1!.length, (index) {
             return list(
               (visitList1?[index].employeeProfileByAssignedById?.firstName),
