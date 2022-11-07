@@ -128,7 +128,8 @@ class _GridExampleState extends State<GridExample> {
           child: GridView.builder(
             itemCount: visitList1!.length,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, crossAxisSpacing: 4.0, mainAxisSpacing: 4.0),
+              crossAxisCount: 2,
+            ),
             itemBuilder: (BuildContext context, int index) {
               return list(
                 (visitList1?[index].employeeProfileByAssignedById?.firstName),
