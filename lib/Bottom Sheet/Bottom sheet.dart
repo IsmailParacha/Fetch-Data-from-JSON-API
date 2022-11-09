@@ -27,6 +27,7 @@ class _BottomsheetState extends State<Bottomsheet> {
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             crossAxisAlignment: CrossAxisAlignment.center,
+                            // mainAxisSize: MainAxisSize.min, //size
                             children: [
                               const Text(
                                 "Bottom sheet",
