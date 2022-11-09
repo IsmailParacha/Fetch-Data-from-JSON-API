@@ -6,6 +6,8 @@ import 'package:ms_global/Grid%20view/grid.dart';
 import 'package:ms_global/View/home.dart';
 import 'package:ms_global/infiniteScrolling/ScrollingPage.dart';
 
+import 'Bottom Sheet/Bottom sheet.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -21,11 +23,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    // return GetMaterialApp(
+    return MaterialApp(
       scaffoldMessengerKey: messengerKey,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      home: GridExample(),
+      home: Bottomsheet(),
       // home: Scaffold(
       //   // body: Property(),
       //   body: Center(
