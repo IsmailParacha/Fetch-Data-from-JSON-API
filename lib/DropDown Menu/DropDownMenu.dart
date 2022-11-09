@@ -17,17 +17,24 @@ class _DropDownExampleState extends State<DropDownExample> {
           title: Text("DailogBox"),
         ),
         body: Center(
-          child: DropdownButton<String>(
-              value: selectedItem,
-              items: dropitem
-                  .map((item) => DropdownMenuItem<String>(
-                        value: item,
-                        child: Text(item),
-                      ))
-                  .toList(),
-              onChanged: (item) => setState(() {
-                    selectedItem = item;
-                  })),
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width / 1.2,
+            child: DropdownButtonFormField<String>(
+                decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide(width: 3, color: Colors.blue))),
+                value: selectedItem,
+                items: dropitem
+                    .map((item) => DropdownMenuItem<String>(
+                          value: item,
+                          child: Text(item),
+                        ))
+                    .toList(),
+                onChanged: (item) => setState(() {
+                      selectedItem = item;
+                    })),
+          ),
         ));
   }
 }
