@@ -22,6 +22,7 @@ class _CheckBoxEampleState extends State<CheckBoxEample> {
           child: CheckboxListTile(
             title: Text("Check requirements"),
             subtitle: Text("Checking"),
+            // controlAffinity:ListTileControlAffinity.leading, //for leading checkBox
             value: isChecked,
             onChanged: (value) {
               setState(
