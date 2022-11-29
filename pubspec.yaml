@@ -38,6 +38,7 @@ dependencies:
   get: ^4.6.5
   intl: ^0.17.0
   material_design_icons_flutter: ^5.0.6996
+  flutter_quill: ^6.1.6
 
 dev_dependencies:
   flutter_test:
