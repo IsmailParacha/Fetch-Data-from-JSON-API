@@ -1,15 +1,4 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:ms_global/CheckBox/CheckBox.dart';
-import 'package:ms_global/DailogBox/DailogBox.dart';
-import 'package:ms_global/DropDown%20Menu/DropDownMenu.dart';
-import 'package:ms_global/ExpansionTile/Expansiontile.dart';
-import 'package:ms_global/Get%20State/Routes/mainPage.dart';
-import 'package:ms_global/Grid%20view/grid.dart';
-import 'package:ms_global/View/home.dart';
-import 'package:ms_global/infiniteScrolling/ScrollingPage.dart';
-
 import 'Bottom Sheet/Bottom sheet.dart';
 
 void main() {
@@ -32,7 +21,7 @@ class _MyAppState extends State<MyApp> {
       scaffoldMessengerKey: messengerKey,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      home: DropDownExample(),
+      home: Bottomsheet(),
       // home: Scaffold(
       //   // body: Property(),
       //   body: Center(
