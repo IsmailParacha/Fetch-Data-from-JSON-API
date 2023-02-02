@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ms_global/Text%20Editor/TextEditor.dart';
 
+import 'View/home.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -21,7 +23,7 @@ class _MyAppState extends State<MyApp> {
       scaffoldMessengerKey: messengerKey,
       navigatorKey: navigatorKey,
       debugShowCheckedModeBanner: false,
-      home: const TextEditor(),
+      home: Home(),
       // home: Scaffold(
       //   // body: Property(),
       //   body: Center(
